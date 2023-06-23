@@ -18,7 +18,8 @@ import { CardProps, FilterProps } from "@/types";
 // }
 
 export async function fetchCars(filters: FilterProps ) {
-
+    //Esta funcion asincrona espera unas props desde la API
+    //Destructuramos la respuesta para poder crear un url completo y especifico
     const {manufacturer, year, model, limit, fuel} = filters;
 
     const headers = {

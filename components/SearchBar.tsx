@@ -19,11 +19,21 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
 );
 
 const SearchBar = () => {
+
+    //Se crean estados que seran actualizados posteriormente
     const [manufacturer, setManuFacturer] = useState("");
     const [model, setModel] = useState("");
 
+    //utilizamos router para redirigir la pagina 
     const router = useRouter();
 
+    //handlesearch recibe un evento del formulario, primero evita la actualizacion de la pagina
+    // con el preventDefault, luego verifica si manufacturar y model estan vacias o contienen espacios en blanco 
+    // con el metodo trim()
+    // Si ambas variables están vacías o contienen solo espacios en blanco, muestra una alerta con el mensaje 
+    //"Please provide some input" utilizando la función alert().
+    // Si las variables manufacturer y model contienen algún valor, llama a la función updateSearchParams() 
+    // pasando como argumentos los valores en minúsculas de model y manufacturer.
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -34,6 +44,8 @@ const SearchBar = () => {
         updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
     };
 
+    // updatesearch recibe como parametros model y manufacturer de tipo string
+    // crea un nuevo url con window.location.search y una nueva ruta o path
     const updateSearchParams = (model: string, manufacturer: string) => {
         // Create a new URLSearchParams object using the current URL search parameters
         const searchParams = new URLSearchParams(window.location.search);

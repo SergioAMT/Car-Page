@@ -4,7 +4,10 @@ import { HomeProps } from "@/types";
 import { fuels, yearsOfProduction } from "@/constants";
 import { CarCard, ShowMore, SearchBar, CustomFilter, Hero } from "@/components";
 
+
+//Funcion asincrona porque espera respuesra de una api
 export default async function Home({ searchParams }: HomeProps) {
+
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
@@ -17,6 +20,8 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <main className='overflow-hidden'>
+      {/* En este componente se renderiza el titulo h1
+      al igual que las imagenes principales */}
       <Hero />
 
       <div className='mt-12 padding-x padding-y max-width' id='discover'>
