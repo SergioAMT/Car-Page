@@ -25,6 +25,7 @@ export interface SearchManufacturerProps {
     setManufacturer: (manufacturer: string) => void;
 }
 
+//Interface que recibe todas las props de cada carro en la API
 export interface CardProps {
     city_mpg: number;
     class: string;

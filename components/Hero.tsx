@@ -9,12 +9,12 @@ const Hero = () => {
   //Y verifica si este existe y no es nulo ya que depende de la peticion a la API
   // de ser asi, el metodo scrollIntoView desliza la pantalla hasta la seccion
   // behavior smooth hace que el movimiento sea suave
-  const handleScroll = () => {
-    const nextSection = document.getElementById("discover");
+  // const handleScroll = () => {
+  //   const nextSection = document.getElementById("discover");
 
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }}
+  //   if (nextSection) {
+  //     nextSection.scrollIntoView({ behavior: "smooth" });
+  //   }}
 
     return (
       <div className='hero'>
@@ -29,11 +29,11 @@ const Hero = () => {
           </p>
 
           {/* Botton reutilizable que se le pasa en handleclick la funcion handlescroll */}
-          <CustomButton
+          {/* <CustomButton
             title="Explore Cars"
             containerStyles="bg-primary-blue text-white rounded-full mt-10"
             handleClick={handleScroll}
-          />
+          /> */}
         </div>
 
         <div className='hero__image-container'>
