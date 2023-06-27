@@ -17,10 +17,11 @@ import { CardProps, FilterProps } from "@/types";
 //     console.error(error);
 // }
 
-export async function fetchCars(filters: FilterProps ) {
+export async function fetchCars(filters: FilterProps) {
     //Esta funcion asincrona espera unas props desde la API
     //Destructuramos la respuesta para poder crear un url completo y especifico
-    const {manufacturer, year, model, limit, fuel} = filters;
+   try {
+    const { manufacturer, year, model, limit, fuel } = filters;
 
     const headers = {
         'X-RapidAPI-Key': '7cb98bc4e8msh7fcb7db64925218p1a08c6jsnc0be5221465e',
@@ -34,6 +35,9 @@ export async function fetchCars(filters: FilterProps ) {
     const result = await response.json();
 
     return result;
+   } catch (error) {
+    console.log(error)
+   }
 }
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
@@ -64,9 +68,9 @@ export const generateCarImageUrl = (car: CardProps, angle?: string) => {
     url.searchParams.append('angle', `${angle}`);
 
     return `${url}`;
-} 
+}
 
-export const updateSearchParams = (type: string, value:string) => {
+export const updateSearchParams = (type: string, value: string) => {
     const searchParams = new URLSearchParams(window.location.search);
 
     searchParams.set(type, value)
