@@ -48,6 +48,7 @@ export interface FilterProps {
     fuel: string
     limit: number
     model: string
+    skip: number
 }
 
 export interface OptionProps {

@@ -6,7 +6,7 @@ import { Filters } from '@/components'
 
 
 const List: NextPageWithLayout = () => {
-    const [model, setModel] = useState('');
+    const [manufacturer, setManufacturer] = useState('');
     return (
 
         <>
@@ -19,7 +19,7 @@ const List: NextPageWithLayout = () => {
             <option value="mercedes">Mercedes</option>
             <option value="audi">Audi</option>
         </select> */}
-            <Filters searchParams={{ model: '', manufacturer: '', fuel: ''}} />X
+            <Filters />
         </>
     )
 }

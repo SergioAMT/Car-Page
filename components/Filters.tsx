@@ -10,13 +10,14 @@ import ShowMore from './ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
 
 
-const Filters: React.FC<HomeProps> = () => {
+const Filters: React.FC = () => {
     const [cars, setCars] = useState([]);
+    const [onSkit, setOnSkit] = useState(0)
     const params = useSearchParams();
     const manufacturer = params?.get('manufacturer');
     const year = params?.get('year');
     const fuel = params?.get('fuel');
-    const limit = params?.get('limit');
+    const limit = Number(params?.get('limit'));
     const model = params?.get('model');
 
 
@@ -26,8 +27,9 @@ const Filters: React.FC<HomeProps> = () => {
             manufacturer: manufacturer || "",
             year: 2022,
             fuel: fuel || "",
-            limit: 10,
+            limit: limit || 10,
             model: model || "",
+            skip: 0
         });
 
         if (allCars?.length) {
@@ -62,15 +64,15 @@ const Filters: React.FC<HomeProps> = () => {
                 {!isDataEmpty ? (
                     <section>
                         <div className='home__cars-wrapper'>
-                            {cars?.map((car) => (
-                                <CarCard car={car} />
+                            {cars?.map((car, index) => (
+                                <CarCard key={index} car={car} />
                             ))}
                         </div>
 
 
                         <ShowMore
-                            pageNumber={10}
-                            isNext={(10) > cars.length}
+                            pageNumber={(limit || 10) / 10}
+                            isNext={(limit || 10) > cars.length}
                         />
                     </section>
                 ) : (
