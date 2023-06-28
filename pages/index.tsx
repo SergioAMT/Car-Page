@@ -1,7 +1,7 @@
 
 "use client"
 import type { ReactElement } from 'react'
-import { CustomButton, Footer, Hero, Navbar } from "@/components";
+import { CustomButton, Footer, Hero, Navbar, Trending } from "@/components";
 import { useRouter } from "next/navigation";
 import Layout from '../components/Layout';
 import type { NextPageWithLayout } from "./_app";
@@ -26,6 +26,9 @@ const Home: NextPageWithLayout = () => {
           containerStyles='bg-primary-blue rounded-full text-white'
           handleClick={handleChange}
         />
+      </div>
+      <div className='w-full flex-center gap-5 mt-10'>
+        <Trending />
       </div>
     </main>
   );

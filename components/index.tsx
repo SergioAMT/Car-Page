@@ -9,7 +9,8 @@ import CarCard from './CarCard';
 import CarDetails from './CarDetails';
 import ShowMore from './ShowMore';
 import Filters from './Filters';
-
+import Trending from './Trending';
+import SignInSide from './SingInForm';
 export{
     Hero,
     CustomButton,
@@ -21,5 +22,7 @@ export{
     CarCard,
     CarDetails,
     ShowMore,
-    Filters
+    Filters,
+    Trending,
+    SignInSide
 }
