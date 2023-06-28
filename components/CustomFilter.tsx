@@ -7,7 +7,7 @@ import { CustomFiltersProps } from '@/types';
 import { updateSearchParams } from '@/utils';
 
 
-const CustomFilter = ({ title, options }: CustomFiltersProps) => {
+const CustomFilter:React.FC<CustomFiltersProps> = ({ title, options }) => {
 
   const router = useRouter();
   const [selected, setselected] = useState(options[0])

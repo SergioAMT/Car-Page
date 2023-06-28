@@ -11,7 +11,8 @@ interface CarCardProps {
     car: CardProps;
 }
 
-const CarCard = ({ car }: CarCardProps) => {
+const CarCard: React.FC<CarCardProps> = ({ car }) => {
+
 
     const [isOpen, setisOpen] = useState(false);
 
