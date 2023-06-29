@@ -8,10 +8,13 @@ import { fetchCars } from '@/utils';
 import CarCard from './CarCard';
 import ShowMore from './ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
+import CustomButton from './CustomButton';
 
 
 const Filters: React.FC = () => {
     const [cars, setCars] = useState([]);
+    const [current, setCurrent] = useState(7)
+    const [prev, setPrev] = useState(0)
     const [onSkit, setOnSkit] = useState(0)
     const params = useSearchParams();
     const manufacturer = params?.get('manufacturer');
@@ -20,6 +23,11 @@ const Filters: React.FC = () => {
     const limit = Number(params?.get('limit'));
     const model = params?.get('model');
 
+    const nextPage = () => {
+        setCurrent(current + 7)
+        setPrev(prev + 7)
+    }
+
 
     const getCars = async (): Promise<void> => {
         // parametros iniciales de busqueda
@@ -27,7 +35,7 @@ const Filters: React.FC = () => {
             manufacturer: manufacturer || "",
             year: 2022,
             fuel: fuel || "",
-            limit: limit || 10,
+            limit: limit || 40,
             model: model || "",
             skip: 0
         });
@@ -60,20 +68,31 @@ const Filters: React.FC = () => {
                     <CustomFilter title='fuel' options={fuels} />
                     <CustomFilter title='year' options={yearsOfProduction} />
                 </div>
+                {/* <p>{current}</p> */}
 
                 {!isDataEmpty ? (
                     <section>
                         <div className='home__cars-wrapper'>
                             {cars?.map((car, index) => (
-                                <CarCard key={index} car={car} />
+
+                                index <= current && index >= prev && (
+                                    <CarCard key={index} car={car} />
+                                )
+                                // index <= 5
+
                             ))}
                         </div>
+                        <CustomButton
+                            title='Show More'
+                            btnType='button'
+                            containerStyles='bg-primary-blue rounded-full text-white'
+                            handleClick={nextPage}
+                        />
 
-
-                        <ShowMore
+                        {/* <ShowMore
                             pageNumber={(limit || 10) / 10}
                             isNext={(limit || 10) > cars.length}
-                        />
+                        /> */}
                     </section>
                 ) : (
                     <div className='home__error-container'>
