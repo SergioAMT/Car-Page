@@ -36,7 +36,7 @@ const Trending: React.FC = () => {
     }, [params]);
 
     return (
-        <div>
+        <div className='mb-32'>
             <div className='flex-1 pt-20 padding-x flex flex-col items-center' >
                 <h1 className='hero__title'>
                     Trending Cars
