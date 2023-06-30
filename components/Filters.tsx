@@ -23,9 +23,14 @@ const Filters: React.FC = () => {
     const limit = Number(params?.get('limit'));
     const model = params?.get('model');
 
-    const nextPage = () => {
+    const nextPage = (e: React.SyntheticEvent) => {
+        e.preventDefault()
         setCurrent(current + 7)
         setPrev(prev + 7)
+    }
+    const prevPage = () => {
+        setCurrent(current - 7)
+        setPrev(prev - 7)
     }
 
 
@@ -82,12 +87,20 @@ const Filters: React.FC = () => {
 
                             ))}
                         </div>
-                        <CustomButton
-                            title='Show More'
-                            btnType='button'
-                            containerStyles='bg-primary-blue rounded-full text-white'
-                            handleClick={nextPage}
-                        />
+                        <div className='mt-10 mb-10 flex justify-center gap-6'>
+                            <CustomButton
+                                title='Previus'
+                                btnType='button'
+                                containerStyles='bg-primary-blue rounded-full text-white w-32'
+                                handleClick={prevPage}
+                            />
+                            <CustomButton
+                                title='Next'
+                                btnType='button'
+                                containerStyles='bg-primary-blue rounded-full text-white  w-32'
+                                handleClick={nextPage}
+                            />
+                        </div>
 
                         {/* <ShowMore
                             pageNumber={(limit || 10) / 10}
